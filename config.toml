@@ -1,0 +1,12 @@
+baseurl = "http://syundo0730.github.io"
+languageCode = "ja"
+title = "ROBO LOG"
+disqusShortname = "robolog"
+
+[Params]
+subtitle = "つくりたいものをつくる"
+twitter = "https://twitter.com/ksyundo"
+github = "https://github.com/syundo0730"
+profile = "/images/profile.jpeg"
+copyright = "Written by Shundo Kishi"
+analytics = "UA-21014159-4"

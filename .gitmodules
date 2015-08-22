@@ -1,0 +1,3 @@
+[submodule "public"]
+	path = public
+	url = git@github.com:syundo0730/blog.syundo.org.git
