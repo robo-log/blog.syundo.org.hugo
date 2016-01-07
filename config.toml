@@ -2,6 +2,8 @@ baseurl = "http://syundo0730.github.io"
 languageCode = "ja"
 title = "ROBO LOG"
 disqusShortname = "robolog"
+pygmentscodefences = true
+pygmentsstyle = "paraiso-light"
 
 [Params]
 subtitle = "つくりたいものをつくる"
