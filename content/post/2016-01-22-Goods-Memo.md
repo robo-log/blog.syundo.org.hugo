@@ -17,3 +17,6 @@ title = "良い物をメモしておく"
 ## 電子部品
 [BLE無線モジュール]
 (http://akizukidenshi.com/catalog/g/gM-10140/)
+
+[超小型USBシリアル変換モジュール]
+(http://akizukidenshi.com/catalog/g/gM-08461/)
