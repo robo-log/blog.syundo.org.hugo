@@ -4,14 +4,14 @@ draft = true
 title = "ReduxをFluxに当てはめながら考える"
 
 +++
-Reactと組み合わせて使うFluxフレームワークとして、どうやらReduxというものが主流になりつつあるようだ。
-下記の有志が書いたチュートリアルを読んで学んだ過程をメモしたい。
+Reactと組み合わせて使うFluxフレームワークとして、Reduxが主流になりつつあるので使えようになりたい。
+下記のチュートリアルを読んで学んだ過程をメモしたい。
 https://github.com/happypoulp/redux-tutorial
-ちなみに私は今までFacebookが提供していた薄いDispatcherだけ使って自分の好きなようにFluxを構成していた。
-このチュートリアルはFluxがMVCとどう違うのかとか、Reduxの部品はFluxの何に当たるのかとか考察してあるので私にとってわかりやすいだろうと思ってこれを選んだ。
+ちなみに私は今までFacebookが提供していたDispatcherだけ使って自分の好きなようにFluxを構成していた。
+このチュートリアルはFluxがMVCとどう違うのかとか、
+Reduxの部品はFluxの何に当たるのかとか書いてあったので私にとってわかりやすいだろうと思ってこれを選んだ。
 
 ## MVCとFlux
-
 ### MVC
 1. User clicks on button "A"
 2. A click handler on button "A" triggers a change on Model "A"
@@ -331,3 +331,11 @@ bundle.jsはコンパイルを経て結合されたやつ。
   </body>
 </html>
 ```
+
+## Middleware
+// action ---> dispatcher ---> middleware 1 ---> middleware 2 ---> reducers
+
+// Our middleware will be called each time an action (or whatever else, like a function in our
+// async action creator case) is dispatched and it should be able to help our action creator
+// dispatch the real action when it wants to (or do nothing - this is a totally valid and
+// sometimes desired behavior).
