@@ -1,2 +1,2 @@
 hugo new post/$1
-atom ./content/post/$1
+code ./content/post/$1
