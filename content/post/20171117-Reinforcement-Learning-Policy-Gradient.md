@@ -35,7 +35,7 @@ $\tau$をステップ$0$から$H$までの状態-行動の系列(状態-行動�
 
 \begin{equation}
 \begin{aligned}
-J(\theta) = E\_{\pi\_{\theta}} \[\sum\_{t=0}^H R(s_t, a_t)\] \\\\\
+J(\theta) = \mathbb{E}\_{\pi\_{\theta}} \[\sum\_{t=0}^H R(s_t, a_t)\] \\\\\
 = \sum\_{\tau} P(\tau ; \theta) R(\tau)
 \end{aligned}
 \end{equation}
@@ -66,7 +66,7 @@ P(\tau ; \theta) = \prod\_{t=0}^H P(s\_{t+1} | s_t, a_t) \pi\_{\theta}(a_t | s_t
 &=& \sum\_{\tau} \frac{P(\tau ; \theta)}{P(\tau ; \theta)} \nabla\_{\theta} P(\tau ; \theta) R(\tau) \\\\\
 &=& \sum\_{\tau} P(\tau ; \theta) \frac{\nabla\_{\theta} P(\tau ; \theta)}{P(\tau ; \theta)} R(\tau) \\\\\
 &=& \sum\_{\tau} P(\tau ; \theta) \nabla\_{\theta} \log P(\tau ; \theta) R(\tau) \\\\\
-&=& E\_{\pi\_{\theta}}\[\nabla\_{\theta} \log P(\tau ; \theta) R(s_t, a_t)\] \\\\\
+&=& \mathbb{E}\_{\pi\_{\theta}}\[\nabla\_{\theta} \log P(\tau ; \theta) R(s_t, a_t)\] \\\\\
 \end{aligned}
 \end{equation}
 
@@ -96,7 +96,7 @@ P(\tau ; \theta) = \prod\_{t=0}^H P(s\_{t+1} | s_t, a_t) \pi\_{\theta}(a_t | s_t
 結局、勾配は
 \begin{equation}
 \begin{aligned}
-\hat{g} = E\_{\pi\_{\theta}}\[\nabla\_{\theta} \log P(\tau ; \theta) R(s_t, a_t)\] \\\\\
+\hat{g} = \mathbb{E}\_{\pi\_{\theta}}\[\nabla\_{\theta} \log P(\tau ; \theta) R(s_t, a_t)\] \\\\\
 where \hspace{15pt}
 \nabla\_{\theta} \log P(\tau ; \theta) =
 \sum\_\{t=0\}^H \nabla\_\{\theta\} \log \pi\_\theta (a_t | s_t)
@@ -105,7 +105,7 @@ where \hspace{15pt}
 
 すなわち
 \begin{equation}
-\hat{g} = E\_{\pi\_\theta}\[\sum\_\{t=0\}^H \nabla\_\{\theta\} \log \pi\_\{\theta\} (a_t | s_t) R(s_t, a_t)\]
+\hat{g} = \mathbb{E}\_{\pi\_\theta}\[\sum\_\{t=0\}^H \nabla\_\{\theta\} \log \pi\_\{\theta\} (a_t | s_t) R(s_t, a_t)\]
 \label{eq:policy_gradient}
 \end{equation}
 
@@ -114,7 +114,7 @@ where \hspace{15pt}
 ## Baseline
 式\eqref{eq:policy_gradient}にbaseline $b$という値を追加する。
 \begin{equation}
-\hat{g} = E\_{\pi\_\theta}\[\sum\_\{t=0\}^H \nabla\_\{\theta\} \log \pi\_\{\theta\} (a_t | s_t) (R(s_t, a_t) - b)\]
+\hat{g} = \mathbb{E}\_{\pi\_\theta}\[\sum\_\{t=0\}^H \nabla\_\{\theta\} \log \pi\_\{\theta\} (a_t | s_t) (R(s_t, a_t) - b)\]
 \label{eq:base_lined_policy_gradient}
 \end{equation}
 
@@ -129,8 +129,8 @@ $R(s_t, a_t) - b$が小さいほど分散が小さくなるので、$b$の決定
 
 \begin{equation}
 \begin{aligned}
-\hat{g} &=& E\_{\pi\_\theta}\[\sum\_\{t=0\}^{\infty} \nabla\_\{\theta\} \log \pi\_\{\theta\} (a_t | s_t) \gamma^t r(s_t, a_t)\] \\\\\
-&=& E\_{\pi\_\theta}\[\sum\_\{t=0\}^{\infty} \nabla\_\{\theta\} \log \pi\_\{\theta\} (a_t | s_t) 
+\hat{g} &=& \mathbb{E}\_{\pi\_\theta}\[\sum\_\{t=0\}^{\infty} \nabla\_\{\theta\} \log \pi\_\{\theta\} (a_t | s_t) \gamma^t r(s_t, a_t)\] \\\\\
+&=& \mathbb{E}\_{\pi\_\theta}\[\sum\_\{t=0\}^{\infty} \nabla\_\{\theta\} \log \pi\_\{\theta\} (a_t | s_t) 
 \[\sum\_\{k=0\}^{t-1} \gamma^k r(s_k, a_k) + \sum\_\{k=t\}^{\infty} \gamma^k r(s_k, a_k)\]\] \\\\\
 \label{eq:policy_gradient_q_func}
 \end{aligned}
@@ -143,9 +143,9 @@ $R(s_t, a_t) - b$が小さいほど分散が小さくなるので、$b$の決定
 
 \begin{equation}
 \begin{aligned}
-\hat{g} &=& E\_{\pi\_\theta}\[\sum\_\{t=0\}^{\infty} \nabla\_\{\theta\} \log \pi\_\{\theta\} (a_t | s_t) 
+\hat{g} &=& \mathbb{E}\_{\pi\_\theta}\[\sum\_\{t=0\}^{\infty} \nabla\_\{\theta\} \log \pi\_\{\theta\} (a_t | s_t) 
 \sum\_\{k=t\}^{\infty} \gamma^k r(s_k, a_k)\] \\\\\
-&=& E\_{\pi\_\theta}\[\sum\_\{t=0\}^{\infty} \nabla\_\{\theta\} \log \pi\_\{\theta\}(a_t | s_t)\]
+&=& \mathbb{E}\_{\pi\_\theta}\[\sum\_\{t=0\}^{\infty} \nabla\_\{\theta\} \log \pi\_\{\theta\}(a_t | s_t)\]
 Q(s, a) \\\\\
 \end{aligned}
 \end{equation}

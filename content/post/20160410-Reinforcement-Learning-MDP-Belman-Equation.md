@@ -40,7 +40,7 @@ G_t = \sum\_{k=0}^{\infty} \gamma ^k R\_{t+k+1}
 さて、ある方策$\pi$を採用したときの報酬がどの程度のものか見積もりたい。
 方策$\pi$のもとで、以下のように関数$V^{\pi}$を定義する。
 \begin{equation}
-V^{\pi}(s) = E[G_t|s_t=s] = E\[R\_\{t+1\}\ + \gamma R\_\{t+2\} + \dots | s_t = s]
+V^{\pi}(s) = \mathbb{E}[G_t|s_t=s] = \mathbb{E}\[R\_\{t+1\}\ + \gamma R\_\{t+2\} + \dots | s_t = s]
 \label{eq:v_func}
 \end{equation}
 これを**状態価値関数**(あるいは単に**価値関数**)と呼ぶ。
@@ -48,7 +48,7 @@ V^{\pi}(s) = E[G_t|s_t=s] = E\[R\_\{t+1\}\ + \gamma R\_\{t+2\} + \dots | s_t = s
 
 同様に、状態だけでなく、行動についても条件として
 \begin{equation}
-Q^{\pi}(s,a) = E[G_t|s_t=s, a_t=a] = E\[R\_\{t+1\}\ + \gamma R\_\{t+2\} + \dots | s_t = s, a_t = a]
+Q^{\pi}(s,a) = \mathbb{E}[G_t|s_t=s, a_t=a] = \mathbb{E}\[R\_\{t+1\}\ + \gamma R\_\{t+2\} + \dots | s_t = s, a_t = a]
 \label{eq:q_func}
 \end{equation}
 も考える。これを、**行動価値関数** と呼ぶ。
@@ -61,13 +61,13 @@ Q^{\*}(s,a) = Q^{\pi^{\*}}(s,a) = \max\_{\pi} Q^{\pi}(s,a)
 とする。
 
 ## ベルマン方程式の導出
-\eqref{eq:v_func}式において$E[\*]$は線形の演算のため、
+\eqref{eq:v_func}式において$\mathbb{E}[\*]$は線形の演算のため、
 
 \begin{equation}
 \begin{aligned}
-V^{\pi}(s) &=&  E\[\sum\_{k=0}^{\infty} \gamma^k R\_{t+k+1} | s_t = s]\\\\\
-&=& E\[R\_{t+1}\ | s_t = s] + E\[\sum\_{k=1}^{\infty} \gamma^k R\_{t+k+1} | s_t = s]\\\\\
-&=& E\[R\_{t+1}\ | s_t = s] + \gamma E\[\sum\_{k=1}^{\infty} \gamma^{k-1} R\_{t+k+1} | s_t = s]
+V^{\pi}(s) &=&  \mathbb{E}\[\sum\_{k=0}^{\infty} \gamma^k R\_{t+k+1} | s_t = s]\\\\\
+&=& \mathbb{E}\[R\_{t+1}\ | s_t = s] + \mathbb{E}\[\sum\_{k=1}^{\infty} \gamma^k R\_{t+k+1} | s_t = s]\\\\\
+&=& \mathbb{E}\[R\_{t+1}\ | s_t = s] + \gamma \mathbb{E}\[\sum\_{k=1}^{\infty} \gamma^{k-1} R\_{t+k+1} | s_t = s]
 \end{aligned}
 \label{eq:q_func_trans}
 \end{equation}
@@ -78,7 +78,7 @@ V^{\pi}(s) &=&  E\[\sum\_{k=0}^{\infty} \gamma^k R\_{t+k+1} | s_t = s]\\\\\
 
 \begin{equation}
 \begin{aligned}
-E\[R\_{t+1}\ | s_t = s]
+\mathbb{E}\[R\_{t+1}\ | s_t = s]
 =\sum\_{a \in A(s)} \pi(a|s) \sum\_{s' \in S} P(s'|s, a) r(s, a, s')
 \end{aligned}
 \label{eq:q_func_trans_1}
@@ -91,9 +91,9 @@ $s_t=s$において行動$a$を取る確率が$\pi(a,|s)$、状態遷移して$s
 次に、\eqref{eq:q_func_trans}式右辺第2項は
 \begin{equation}
 \begin{aligned}
-E\[\sum\_{k=1}^{\infty} \gamma^{k-1} R\_{t+k+1} | s_t = s]
-&=& \sum\_{a \in A(s)} \pi(a|s) \sum\_{s' \in S} P(s'|s,a) E\[\sum\_{k=1}^{\infty} \gamma^{k-1} R\_{t+k+1} | s\_{t+1} = s']\\\\\
-&=& \sum\_{a \in A(s)} \pi(a|s) \sum\_{s' \in S} P(s'|s,a) E\[\sum\_{k=0}^{\infty} \gamma^k R\_{(t+1)+k+1} | s\_{t+1} = s']\\\\\
+\mathbb{E}\[\sum\_{k=1}^{\infty} \gamma^{k-1} R\_{t+k+1} | s_t = s]
+&=& \sum\_{a \in A(s)} \pi(a|s) \sum\_{s' \in S} P(s'|s,a) \mathbb{E}\[\sum\_{k=1}^{\infty} \gamma^{k-1} R\_{t+k+1} | s\_{t+1} = s']\\\\\
+&=& \sum\_{a \in A(s)} \pi(a|s) \sum\_{s' \in S} P(s'|s,a) \mathbb{E}\[\sum\_{k=0}^{\infty} \gamma^k R\_{(t+1)+k+1} | s\_{t+1} = s']\\\\\
 &=& \sum\_{a \in A(s)} \pi(a|s) \sum\_{s' \in S} P(s'|s,a) V^{\pi}(s')
 \end{aligned}
 \label{eq:q_func_trans_2}
