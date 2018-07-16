@@ -1,7 +1,7 @@
 ---
 title: "方策勾配法 pathwise derivertive method, SVG(Stocastic Value Gradient), DPG(Deterministic Policy Gradient)"
 date: 2018-07-14T21:33:33+09:00
-draft: true
+draft: false
 ---
 
 [方策勾配法の記事](../20171117-reinforcement-learning-policy-gradient)では、確率的な方策についてその勾配を評価するためのscore functionを直接求める方法について述べた。
