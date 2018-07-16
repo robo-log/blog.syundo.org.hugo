@@ -1,14 +1,14 @@
 ---
-title: "方策勾配法 pathwise derivertive method, SVG(Stocastic Value Gradient), DPG(Deterministic Policy Gradient)"
+title: "方策勾配法 pathwise derivative method, SVG(Stocastic Value Gradient), DPG(Deterministic Policy Gradient)"
 date: 2018-07-14T21:33:33+09:00
 draft: false
 ---
 
 [方策勾配法の記事](../20171117-reinforcement-learning-policy-gradient)では、確率的な方策についてその勾配を評価するためのscore functionを直接求める方法について述べた。
-本記事では、方策勾配を求めるために価値関数の微分を計算する手法(pathwise derivertive method)について扱う。
+本記事では、方策勾配を求めるために価値関数の微分を計算する手法(pathwise derivative method)について扱う。
 
 何らかの関数$F$があるときに、その期待値の勾配$\nabla_{\theta} \mathbb{E}[F]$を求めたいとする。
-likelihood ratio methodとpathwise derivertive methodの違いは、パラメタ$\theta$が期待値にかかってくる確率分布に設定されているか、モデル$F$に存在すると考えるか、ということだといえる。
+likelihood ratio methodとpathwise derivative methodの違いは、パラメタ$\theta$が期待値にかかってくる確率分布に設定されているか、モデル$F$に存在すると考えるか、ということだといえる。
 
 つまり、前者の場合は、[方策勾配法の記事](../20171117-reinforcement-learning-policy-gradient)で述べたように
 
