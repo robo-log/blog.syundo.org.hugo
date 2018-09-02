@@ -1,3 +1,6 @@
 [submodule "public"]
 	path = public
 	url = git@github.com:robo-log/robo-log.github.io.git
+[submodule "themes/dream-plus"]
+	path = themes/dream-plus
+	url = https://github.com/UtkarshVerma/hugo-dream-plus
