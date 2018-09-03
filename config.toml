@@ -1,14 +1,50 @@
 baseurl = "http://blog.syundo.org"
 languageCode = "ja"
+defaultContentLanguage = "ja"
 title = "ROBO LOG"
-disqusShortname = "robolog"
-pygmentscodefences = true
+theme = "dream-plus"
+
+pygmentsCodeFences = true
+pygmentsUseClasses = true
+pygmentsOptions = "linenos=table"
 pygmentsstyle = "paraiso-light"
 
+disqusShortname = "robolog"
+
+enableRobotsTXT = true
+
+# Enable Hugo Emoji Conversion
+enableEmoji = true
+
+
 [Params]
-subtitle = "つくりたいものをつくる"
-twitter = "https://twitter.com/ksyundo"
-github = "https://github.com/syundo0730"
-profile = "/images/profile.jpeg"
-copyright = "Written by Shundo Kishi"
+author = "きゅんどう @ksyundo"
+description = "つくりたいものをつくる"
+avator = "http://blog.syundo.org/images/profile.jpeg"
+motto = "A keen maker, programmer and an Instructables author."
+enableToc = true
+enableShareCard = true
+
+# Background settings
+enableColorBG = false
+
+# Post-displaying Settings
+enableTags = true
+enableCategories = true
+
+# Cards or posts shown per page
+itemsPerPage = 8
+
+# Set whether you're hosting "cards" or "post"
+contentType = "post"
+
+# Enable Twitter Emoji
+twitterEmoji = true
+
+# for google analytics
 analytics = "UA-21014159-4"
+
+[social]
+twitter = "ksyundo"
+github = "syundo0730"
+siteStartYear = 2006
