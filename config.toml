@@ -4,23 +4,24 @@ defaultContentLanguage = "ja"
 title = "ROBO LOG"
 theme = "dream-plus"
 
+# Hugo Built-in Features
+disqusShortname = "robolog"
+googleAnalytics = "UA-21014159-4"
+enableRobotsTXT = true
+
+# pygments
 pygmentsCodeFences = true
 pygmentsUseClasses = true
 pygmentsOptions = "linenos=table"
 pygmentsstyle = "paraiso-light"
 
-disqusShortname = "robolog"
-
-enableRobotsTXT = true
-
 # Enable Hugo Emoji Conversion
 enableEmoji = true
-
 
 [Params]
 author = "きゅんどう @ksyundo"
 description = "つくりたいものをつくる"
-avator = "http://blog.syundo.org/images/profile.jpeg"
+avatar = "/images/profile.jpeg"
 motto = "A keen maker, programmer and an Instructables author."
 enableToc = true
 enableShareCard = true
@@ -42,7 +43,6 @@ contentType = "post"
 twitterEmoji = true
 
 # for google analytics
-analytics = "UA-21014159-4"
 
 [social]
 twitter = "ksyundo"
