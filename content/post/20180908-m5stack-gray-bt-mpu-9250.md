@@ -3,7 +3,7 @@ title: M5stack Gray で MPU9250 で取得した角度を Bluetooth SPPで送る
 date: 2018-09-08T15:26:57+09:00
 lastmod: 2018-09-08T15:26:57+09:00
 cover: "/images/2018/09/m5stack.jpg"
-draft: true
+draft: false
 categories: ["電子工作"]
 tags: ["IMU", "MPU-9250", "Bluetooth", "M5Stack", "M5Stack Gray", "Arduino", "ESP32"]
 description: 
@@ -27,6 +27,16 @@ M5Stackは色々なやってみたいことをサクッと実装するために�
 初心者向けにArduinoに標準対応してくれればもっと敷居が低くなるのになぁとは思った。
 
 # M5Stack Gray で無線IMU
+* https://github.com/m5stack/M5Stack/blob/master/examples/Modules/MPU9250/MPU9250BasicAHRS/MPU9250BasicAHRS.ino
+* https://github.com/espressif/arduino-esp32/blob/master/libraries/BluetoothSerial/examples/SerialToSerialBT/SerialToSerialBT.ino
+
+以上のコードを組み合わせれば簡単に姿勢をBluetoothで送れる。
+Mahony filterというのを使ってクオータニオンを算出し、Yaw-Pitch-Rollに変換しているようだ。
+
+元のコードそのままだとかなり煩雑になっているので、整理した。
+https://github.com/hackathon201808/hackathon201808/blob/master/arduino/m5stackgray/imu_bt/imu_bt.ino
+これで姿勢について様々な処理を追加する見通しが立てやすくなったと思う。
+
 ## 接続先PCがUbuntu16.04の場合
 Bluetooth接続をシリアルポートを介した通信のように扱うSPP(Serial Protocol Profile)を使うために、Ubuntu側で準備が必要になる。
 
