@@ -1,5 +1,5 @@
 ---
-title: "方策勾配法 pathwise derivative method, SVG(Stocastic Value Gradient), DPG(Deterministic Policy Gradient)"
+title: "pathwise derivative method: Stocastic Value Gradient(SVG), (Deep) Deterministic Policy Gradient(DPG/DDPG)"
 date: 2018-07-14T21:33:33+09:00
 draft: false
 ---
@@ -29,9 +29,9 @@ likelihood ratio methodとpathwise derivative methodの違いは、パラメタ$
 そうでなければ、期待値計算の中に微分の操作を入れるような入れ替えを行うことはできない。
 また、$f$は微分可能であるものとして、勾配が0にならないようにする。
 
-# SVG
+# Stocastic Value Gradient(SVG)
 [MDPとベルマン方程式](../20160410-reinforcement-learning-mdp-belman-equation)
-で導出したベルマン方程式において、終端状態を表現するためだけに事変の報酬$r^{(t)} = r(s^{(t)}, a^{(t)}, t)$を用いることを想定する(一連の動作のうち最後の状態遷移で報酬$r^{(t)}$が得られるイメージ)。
+で導出したベルマン方程式において、終端状態を表現するためだけに時変の報酬$r^{(t)} = r(s^{(t)}, a^{(t)}, t)$を用いることを想定する(一連の動作のうち最後の状態遷移で報酬$r^{(t)}$が得られるイメージ)。
 このとき、連続空間におけるベルマン方程式は以下のようになる。
 
 \begin{equation}
@@ -105,13 +105,60 @@ r\_a \pi\_{\theta} +
 v'\_{\theta}
 \] \|\_{\eta, \xi'}
 \end{aligned}
+\label{eq:sample_v}
 \end{equation}
 
 となる。
 
 ## SVG($\infty$)
-以上の性質を利用して、SVG($\infty$)では、状態遷移確率関数$\hat{f}(s, a, \xi)$、方策$\pi(s, \eta)$を同時に学習する。
+時間ステップ$T$について、式\eqref{eq:sample_v}を用いて逆向きに計算し、$v^{(0)}\_{\theta}$を実際に用いるのがSVG($\infty$)である。
+SVG($\infty$)のアルゴリズムを見ると、以下のようになっている。
 <img src="/images/2018/07/svg_inf.png" width="400px">
+つまり、
 
-## 動画
+1. $t=0 \dots T$の順方向パスにおいて、現在の方策$\pi$を実行し、$(s,a,r,s')$のペアを$\mathcal{D}$に記録する。
+2. $\mathcal{D}$から近似モデル$\hat{f}$を推定する。モデルとしては微分可能であれば、何でも使うことができる。論文ではNeural Networkを用いている。
+3. $t=T+1$での初期値として$v's_s=0, v'\_{\theta}=0$とする
+4. $t=T \dots 0$について、$\xi, \eta$の推定、式\eqref{eq:sample_v}の計算を時間ステップの逆方向にしていく。$\xi, \eta$は\mathcal{D}における同じ時刻$t$の情報を用いて推定できる。
+5. $v^{(0)}\_{\theta}$を用いてパラメタ$\theta$を更新する
+
+以上の1. - 5.を収束するまで繰り返し計算する。
+
+ちなみに、SVG($\infty$)の$\infty$はモデル$f$を使ってどれだけの時間ステップ軌道を計算しているかということを表している。
+そうすると、$\infty$でなく$T$な気がするが、私はそのあたりのニュアンスはよく理解できていない。
+
+## SVG(1)
+SVG(1)では、SVG($\inf$)とは違い、$\mathcal{D}$から価値関数$V$を学習する。
+これによって、SVG($\inf$)にあった$v_s$の時間方向の更新は必要なくなる。
+また、$v_s$の更新はモデル$f$を用いて1時間ステップのみ行われる。
+さらに、重点サンプリングを用いて$v\_{\theta}$を更新する。
+この重点サンプリングを用いる方法を論文中では特にSVG(1)-ER(Experience Replay)と呼んでいる。
+論文中では$SVG(1)-ER$が最も性能が高いと報告している。
+
+SVG(1)のアルゴリズムを以下に引用する。
+<img src="/images/2018/07/svg_1_er.png" width="400px">
+
+価値関数$\hat{V}$の推定にはFitted Policy Evaluationが用いられている。
+<img src="/images/2018/07/fitted_policy_eval.png" width="400px">
+
+## SVG(0) と DPG/DDPG
+SVG(0)はSVG(1)と似通った手法だが、モデル$f$を用いない、モデルフリーな手法である。
+そのかわりに、$V$でなく行動価値関数$Q$を学習する。
+<img src="/images/2018/07/svg_0.png" width="400px">
+
+SVG(0)はDeterministic Policy Gradient(DPG)あるいは特にActor, CriticにDeep Neural Networkを用いるDeep Deterministic Policy Gradient(DDPG)とほとんど同じ手法となっている。
+DPGとの違いは、SVG(0)では方策$\pi$を確率的なものとして扱っているので、
+
+$\pi$の確率変数$\eta$を推定し、
+$\mathbb{E}\_{\rho(\eta)} \left\[
+  Q_a \pi\_{\theta} | \eta
+\right\]$
+を求める。
+これは実際には上記のアルゴリズムにあるようにモンテカルロ法で計算される。
+
+# 動画
 <iframe width="560" height="315" src="https://www.youtube.com/embed/PYdL7bcn_cM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+# まとめ
+SVGとその亜種についてまとめた。
+DPG/DDPGと非常に近い手法であることが理解できてよかった。
