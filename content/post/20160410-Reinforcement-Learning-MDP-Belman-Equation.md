@@ -1,6 +1,8 @@
 +++
 date = "2016-04-10T15:19:17+09:00"
 draft = false
+categories = ["まとめ"]
+tags = ["Reinforcement Learning"]
 title = "強化学習についてまとめる(1) MDPとベルマン方程式"
 
 +++
@@ -65,9 +67,9 @@ Q^{\*}(s,a) = Q^{\pi^{\*}}(s,a) = \max\_{\pi} Q^{\pi}(s,a)
 
 \begin{equation}
 \begin{aligned}
-V^{\pi}(s) &=&  \mathbb{E}\[\sum\_{k=0}^{\infty} \gamma^k R\_{t+k+1} | s_t = s]\\\\\
-&=& \mathbb{E}\[R\_{t+1}\ | s_t = s] + \mathbb{E}\[\sum\_{k=1}^{\infty} \gamma^k R\_{t+k+1} | s_t = s]\\\\\
-&=& \mathbb{E}\[R\_{t+1}\ | s_t = s] + \gamma \mathbb{E}\[\sum\_{k=1}^{\infty} \gamma^{k-1} R\_{t+k+1} | s_t = s]
+V^{\pi}(s) &=  \mathbb{E}\[\sum\_{k=0}^{\infty} \gamma^k R\_{t+k+1} | s_t = s]\\\\\
+&= \mathbb{E}\[R\_{t+1}\ | s_t = s] + \mathbb{E}\[\sum\_{k=1}^{\infty} \gamma^k R\_{t+k+1} | s_t = s]\\\\\
+&= \mathbb{E}\[R\_{t+1}\ | s_t = s] + \gamma \mathbb{E}\[\sum\_{k=1}^{\infty} \gamma^{k-1} R\_{t+k+1} | s_t = s]
 \end{aligned}
 \label{eq:q_func_trans}
 \end{equation}
@@ -92,9 +94,9 @@ $s_t=s$において行動$a$を取る確率が$\pi(a,|s)$、状態遷移して$s
 \begin{equation}
 \begin{aligned}
 \mathbb{E}\[\sum\_{k=1}^{\infty} \gamma^{k-1} R\_{t+k+1} | s_t = s]
-&=& \sum\_{a \in A(s)} \pi(a|s) \sum\_{s' \in S} P(s'|s,a) \mathbb{E}\[\sum\_{k=1}^{\infty} \gamma^{k-1} R\_{t+k+1} | s\_{t+1} = s']\\\\\
-&=& \sum\_{a \in A(s)} \pi(a|s) \sum\_{s' \in S} P(s'|s,a) \mathbb{E}\[\sum\_{k=0}^{\infty} \gamma^k R\_{(t+1)+k+1} | s\_{t+1} = s']\\\\\
-&=& \sum\_{a \in A(s)} \pi(a|s) \sum\_{s' \in S} P(s'|s,a) V^{\pi}(s')
+&= \sum\_{a \in A(s)} \pi(a|s) \sum\_{s' \in S} P(s'|s,a) \mathbb{E}\[\sum\_{k=1}^{\infty} \gamma^{k-1} R\_{t+k+1} | s\_{t+1} = s']\\\\\
+&= \sum\_{a \in A(s)} \pi(a|s) \sum\_{s' \in S} P(s'|s,a) \mathbb{E}\[\sum\_{k=0}^{\infty} \gamma^k R\_{(t+1)+k+1} | s\_{t+1} = s']\\\\\
+&= \sum\_{a \in A(s)} \pi(a|s) \sum\_{s' \in S} P(s'|s,a) V^{\pi}(s')
 \end{aligned}
 \label{eq:q_func_trans_2}
 \end{equation}
@@ -121,8 +123,8 @@ V^{\pi}(s) = \sum\_{a \in A(s)} \pi(a|s) Q^{\pi}(s,a)
 であるから、
 \begin{equation}
 \begin{aligned}
-Q^{\pi}(s, a) &=& \sum\_{s'} P(s'|s, a) \left(r(s, a, s') + \gamma V^{\pi}(s') \right)\\\\\
-&=& \sum\_{s'} P(s'|s, a) \left(r(s, a, s') + \gamma \sum\_{a \in A(s')} \pi(a'|s') Q^{\pi}(s',a') \right)
+Q^{\pi}(s, a) &= \sum\_{s'} P(s'|s, a) \left(r(s, a, s') + \gamma V^{\pi}(s') \right)\\\\\
+&= \sum\_{s'} P(s'|s, a) \left(r(s, a, s') + \gamma \sum\_{a \in A(s')} \pi(a'|s') Q^{\pi}(s',a') \right)
 \end{aligned}
 \end{equation}
 

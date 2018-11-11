@@ -1,6 +1,8 @@
 ---
 title: "強化学習についてまとめる(5) 自然方策勾配法とTRPO, PPO"
 date: 2017-12-04T22:39:35+09:00
+categories: ["まとめ"]
+tags: ["Reinforcement Learning"]
 draft: false
 ---
 

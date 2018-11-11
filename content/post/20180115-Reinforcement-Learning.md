@@ -1,6 +1,8 @@
 ---
 title: "強化学習についてまとめる"
 date: 2018-01-15T04:09:32+09:00
+categories: ["まとめ"]
+tags: ["Reinforcement Learning"]
 draft: false
 ---
 

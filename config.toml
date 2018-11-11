@@ -11,9 +11,6 @@ enableRobotsTXT = true
 
 # pygments
 pygmentsCodeFences = true
-pygmentsUseClasses = true
-pygmentsOptions = "linenos=table"
-pygmentsstyle = "paraiso-light"
 
 # Enable Hugo Emoji Conversion
 enableEmoji = true

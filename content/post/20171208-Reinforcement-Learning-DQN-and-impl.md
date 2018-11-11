@@ -1,6 +1,8 @@
 ---
 title: "強化学習についてまとめる(7) DQNとDDQN"
 date: 2017-12-28T20:37:58+09:00
+categories: ["まとめ"]
+tags: ["Reinforcement Learning"]
 draft: false
 ---
 今回は[Q-Learningの回](../20171110-reinforcement-value-policy-iteration/)で取り上げた手法をニューラルネットを使って近似するように発展させたもの(DQN)についてまとめる。

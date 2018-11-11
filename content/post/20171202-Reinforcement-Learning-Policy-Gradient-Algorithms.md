@@ -1,6 +1,8 @@
 +++
 date = "2017-12-02T16:41:14+09:00"
 draft = false
+categories = ["まとめ"]
+tags = ["Reinforcement Learning"]
 title = "強化学習についてまとめる(4) 方策勾配に基づくアルゴリズム、Actor-Critic"
 
 +++
@@ -44,6 +46,7 @@ A^{\pi}(s, a) = Q^{\pi}(s, a) - V^{\pi}(s)
 \end{equation}
 で更新できる。
 このアドバンテージを小さくする **Critic** と方策を更新する **Actor** を組み合わせた方法全般を **Actor-Critic** 法と呼ぶ。
+Actor-Criticと大仰な呼び方がされるが、要は方策勾配を求めるときのbaselineを工夫したというふうに理解すれば良いようだ。
 
 ActorとCriticはそれぞれ様々な方法で実装できる。
 Criticとしては前々回までで扱った価値反復法や、最小二乗法を用いることができる。

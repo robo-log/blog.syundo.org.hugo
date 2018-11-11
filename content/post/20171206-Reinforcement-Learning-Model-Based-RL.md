@@ -1,6 +1,8 @@
 ---
 title: "強化学習についてまとめる(6) モデルベース強化学習"
 date: 2017-12-06T03:41:20+09:00
+categories: ["まとめ"]
+tags: ["Reinforcement Learning"]
 draft: false
 ---
 

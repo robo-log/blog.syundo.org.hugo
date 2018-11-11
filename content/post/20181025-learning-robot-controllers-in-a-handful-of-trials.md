@@ -2,7 +2,6 @@
 title: A survey on policy search algorithms for learning robot controllers in a handful of trials
 date: 2018-10-22T20:40:31+09:00
 lastmod: 2018-10-22T20:40:31+09:00
-cover: "/images/default1.jpg"
 draft: true
 categories: ["category1"]
 tags: ["tag1", "tag2"]

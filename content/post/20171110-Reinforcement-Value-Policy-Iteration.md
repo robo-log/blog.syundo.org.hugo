@@ -1,6 +1,8 @@
 +++
 date = "2017-11-10T19:54:59+09:00"
 draft = false
+categories = ["まとめ"]
+tags = ["Reinforcement Learning"]
 title = "強化学習についてまとめる(2) 反復による価値の推定"
 
 +++

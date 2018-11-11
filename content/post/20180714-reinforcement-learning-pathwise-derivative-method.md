@@ -71,13 +71,13 @@ V(s) = \mathbb{E}\_{\rho(\eta)} \left\[r(s, \pi(s, \eta; \theta))
 
 \begin{equation}
 \begin{aligned}
-V\_s &=& \mathbb{E}\_{\rho(\eta)} \[
+V\_s &= \mathbb{E}\_{\rho(\eta)} \[
 r\_s +
 r\_a \pi\_s +
 \gamma \mathbb{E}\_{\rho(\xi)}
 V'\_{s'}(f\_s + f\_a \pi\_s)
 \] \\\\\
-V\_{\theta} &=& \mathbb{E}\_{\rho(\eta)} \[
+V\_{\theta} &= \mathbb{E}\_{\rho(\eta)} \[
 r\_a \pi\_{\theta} +
 \gamma \mathbb{E}\_{\rho(\xi)}
 \[
@@ -94,12 +94,12 @@ V'\_{\theta}
 
 \begin{equation}
 \begin{aligned}
-v\_s &=& \[
+v\_s &= \[
 r\_s +
 r\_a \pi\_s +
 \gamma v'\_{s'}(f\_s + f\_a \pi\_s)
 \] \|\_{\eta, \xi'} \\\\\
-v\_{\theta} &=& \[
+v\_{\theta} &= \[
 r\_a \pi\_{\theta} +
 \gamma v'\_{s'} f\_a \pi\_{\theta} +
 v'\_{\theta}

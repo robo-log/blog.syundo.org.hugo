@@ -1,6 +1,8 @@
 ---
 title: "強化学習についてまとめる(7) 逆強化学習"
 date: 2017-12-07T22:10:44+09:00
+categories: ["まとめ"]
+tags: ["Reinforcement Learning"]
 draft: true
 ---
 

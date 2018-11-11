@@ -251,17 +251,17 @@ V\_{xx} &= Q\_{xx} - \mathrm{K}^{\mathrm{T}} Q\_{uu} \mathrm{K} \\\\\
 の手順を踏む手法が、DDPである。
 
 # 線形システムへの近似とQuadratic Cost functionの採用
-非線形システム$f(x, u)$をstep $i$の状態$x_i$, 入力$u_i$において線形化することを考える
+非線形システム$f(x, u)$をstep $i$の状態$x_k$, 入力$u_k$において線形化することを考える
 
 \begin{equation}
-(x - x_i) = \mathrm{A_i} (x - x_i) + \mathrm{B_i} (u - u_i)
+(x - x_k) = \mathrm{A_k} (x - x_k) + \mathrm{B_k} (u - u_k)
 \end{equation}
 
 ここで、
 \begin{equation}
 \begin{aligned}
-\mathrm{A_i} = \frac{\partial f_i}{\partial x} (x_i, u_i) \\\\\
-\mathrm{B_i} = \frac{\partial f_i}{\partial u} (x_i, u_i)
+\mathrm{A_k} = \frac{\partial f_k}{\partial x} (x_k, u_k) \\\\\
+\mathrm{B_k} = \frac{\partial f_k}{\partial u} (x_k, u_k)
 \end{aligned}
 \end{equation}
 
@@ -270,16 +270,21 @@ V\_{xx} &= Q\_{xx} - \mathrm{K}^{\mathrm{T}} Q\_{uu} \mathrm{K} \\\\\
 線形システムの最適化問題としては、LQR(Linear Quadratic Regrator)がよく知られており、そのコスト関数は
 
 \begin{equation}
-l_i(x_i, u_i) = \frac{1}{2} x^{\mathrm{T}} \mathrm{Q} x +
+l_k(x_k, u_k) = \frac{1}{2} x^{\mathrm{T}} \mathrm{Q} x +
 \frac{1}{2} u^{\mathrm{T}} \mathrm{R} u
 \end{equation}
 
-この離散システムを最小化する解は以下のRecatti方程式を解くことで得られることが知られている。
+この離散システムを最小化する解は以下のRicatti方程式を解くことで得られることが知られている。
+
+\begin{equation}
+S(k) = Q + A_k^{\mathrm{T}} S(k+1) A_k
+- A_k^{\mathrm{T}}S(k+1)B_k(R + B_k^{\mathrm{T}}S(k+1)B_k)^{-1}B_k^{\mathrm{T}}S(k+1)A_k
+\label{eq:ricatti_eq}
+\end{equation}
 
 # iterative LQR(iLQR)
-式の解は
-式から$f$の二階微分の項を除いたものになっている。
-これはDDPがニュートン法であったのに対してiLQRはガウスニュートン法を用いたものであるとも言える。
+式\eqref{eq:ricatti_eq}を満たす最適制御入力は式\eqref{eq:optimal_input_k}から$f$の二階微分の項を除いたものになっている。
+このため、DDPがニュートン法であったのに対してiLQRはガウスニュートン法を用いたものであるとも言える。
 iLQRはDDPのようにヘッシアンを計算する必要も逆行列を計算する必要もないため、DDPに比べて高速に処理できる。
 一方で、DDPよりも収束は遅いため、iteration数は大きくなるようだ。
 
@@ -293,3 +298,5 @@ SLQはiLQRに対して、離散システムの逐次最適化における手順3
 # まとめ
 DDP, iLQR, SLQの関係をまとめた。
 どれも、2次の近似における最適化だということがわかった。
+
+EXPLORATION BY RANDOM NETWORK DISTILLATION

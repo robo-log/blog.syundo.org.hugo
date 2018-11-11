@@ -1,6 +1,8 @@
 +++
 date = "2017-11-17T03:15:08+09:00"
 draft = false
+categories = ["まとめ"]
+tags = ["Reinforcement Learning"]
 title = "強化学習についてまとめる(3) 方策勾配"
 
 +++
@@ -61,12 +63,12 @@ P(\tau ; \theta) = \prod\_{t=0}^H P(s\_{t+1} | s_t, a_t) \pi\_{\theta}(a_t | s_t
 
 \begin{equation}
 \begin{aligned}
-\nabla\_{\theta} J(\theta) &=& \nabla\_{\theta} \sum\_{\tau} P(\tau ; \theta) R(\tau) \\\\\
-&=& \sum\_{\tau} \nabla\_{\theta} P(\tau ; \theta) R(\tau) \\\\\
-&=& \sum\_{\tau} \frac{P(\tau ; \theta)}{P(\tau ; \theta)} \nabla\_{\theta} P(\tau ; \theta) R(\tau) \\\\\
-&=& \sum\_{\tau} P(\tau ; \theta) \frac{\nabla\_{\theta} P(\tau ; \theta)}{P(\tau ; \theta)} R(\tau) \\\\\
-&=& \sum\_{\tau} P(\tau ; \theta) \nabla\_{\theta} \log P(\tau ; \theta) R(\tau) \\\\\
-&=& \mathbb{E}\_{\pi\_{\theta}}\[\nabla\_{\theta} \log P(\tau ; \theta) R(s_t, a_t)\] \\\\\
+\nabla\_{\theta} J(\theta) &= \nabla\_{\theta} \sum\_{\tau} P(\tau ; \theta) R(\tau) \\\\\
+&= \sum\_{\tau} \nabla\_{\theta} P(\tau ; \theta) R(\tau) \\\\\
+&= \sum\_{\tau} \frac{P(\tau ; \theta)}{P(\tau ; \theta)} \nabla\_{\theta} P(\tau ; \theta) R(\tau) \\\\\
+&= \sum\_{\tau} P(\tau ; \theta) \frac{\nabla\_{\theta} P(\tau ; \theta)}{P(\tau ; \theta)} R(\tau) \\\\\
+&= \sum\_{\tau} P(\tau ; \theta) \nabla\_{\theta} \log P(\tau ; \theta) R(\tau) \\\\\
+&= \mathbb{E}\_{\pi\_{\theta}}\[\nabla\_{\theta} \log P(\tau ; \theta) R(s_t, a_t)\] \\\\\
 \end{aligned}
 \end{equation}
 
@@ -82,12 +84,12 @@ P(\tau ; \theta) = \prod\_{t=0}^H P(s\_{t+1} | s_t, a_t) \pi\_{\theta}(a_t | s_t
 \begin{equation}
 \begin{aligned}
 \nabla\_{\theta} \log P(\tau ; \theta)
-&=& \nabla\_{\theta} \log
+&= \nabla\_{\theta} \log
 \left[ \prod\_{t=0}^H P(s\_{t+1} | s_t, a_t) \pi\_{\theta}(a_t | s_t) \right] \\\\\
-&=& \nabla\_\{\theta\} \left\[ \sum\_\{t=0\}^H \log P(s\_\{t+1\} | s_t, a_t) \right\] +
+&= \nabla\_\{\theta\} \left\[ \sum\_\{t=0\}^H \log P(s\_\{t+1\} | s_t, a_t) \right\] +
 \nabla\_\{\theta\} \left\[ \sum\_\{t=0\}^H \log \pi\_{\theta} (a_t | s_t) \right\] \\\\\
-&=& \nabla\_\{\theta\} \sum\_\{t=0\}^H \log \pi\_{\theta} (a_t | s_t) \\\\\
-&=& \sum\_\{t=0\}^H \nabla\_\{\theta\} \log \pi\_{\theta} (a_t | s_t)
+&= \nabla\_\{\theta\} \sum\_\{t=0\}^H \log \pi\_{\theta} (a_t | s_t) \\\\\
+&= \sum\_\{t=0\}^H \nabla\_\{\theta\} \log \pi\_{\theta} (a_t | s_t)
 \end{aligned}
 \end{equation}
 
@@ -129,8 +131,8 @@ $R(s_t, a_t) - b$が小さいほど分散が小さくなるので、$b$の決定
 
 \begin{equation}
 \begin{aligned}
-\hat{g} &=& \mathbb{E}\_{\pi\_\theta}\[\sum\_\{t=0\}^{\infty} \nabla\_\{\theta\} \log \pi\_\{\theta\} (a_t | s_t) \gamma^t r(s_t, a_t)\] \\\\\
-&=& \mathbb{E}\_{\pi\_\theta}\[\sum\_\{t=0\}^{\infty} \nabla\_\{\theta\} \log \pi\_\{\theta\} (a_t | s_t) 
+\hat{g} &= \mathbb{E}\_{\pi\_\theta}\[\sum\_\{t=0\}^{\infty} \nabla\_\{\theta\} \log \pi\_\{\theta\} (a_t | s_t) \gamma^t r(s_t, a_t)\] \\\\\
+&= \mathbb{E}\_{\pi\_\theta}\[\sum\_\{t=0\}^{\infty} \nabla\_\{\theta\} \log \pi\_\{\theta\} (a_t | s_t) 
 \[\sum\_\{k=0\}^{t-1} \gamma^k r(s_k, a_k) + \sum\_\{k=t\}^{\infty} \gamma^k r(s_k, a_k)\]\] \\\\\
 \label{eq:policy_gradient_q_func}
 \end{aligned}
@@ -143,9 +145,9 @@ $R(s_t, a_t) - b$が小さいほど分散が小さくなるので、$b$の決定
 
 \begin{equation}
 \begin{aligned}
-\hat{g} &=& \mathbb{E}\_{\pi\_\theta}\[\sum\_\{t=0\}^{\infty} \nabla\_\{\theta\} \log \pi\_\{\theta\} (a_t | s_t) 
+\hat{g} &= \mathbb{E}\_{\pi\_\theta}\[\sum\_\{t=0\}^{\infty} \nabla\_\{\theta\} \log \pi\_\{\theta\} (a_t | s_t) 
 \sum\_\{k=t\}^{\infty} \gamma^k r(s_k, a_k)\] \\\\\
-&=& \mathbb{E}\_{\pi\_\theta}\[\sum\_\{t=0\}^{\infty} \nabla\_\{\theta\} \log \pi\_\{\theta\}(a_t | s_t)\]
+&= \mathbb{E}\_{\pi\_\theta}\[\sum\_\{t=0\}^{\infty} \nabla\_\{\theta\} \log \pi\_\{\theta\}(a_t | s_t)\]
 Q(s, a) \\\\\
 \end{aligned}
 \end{equation}

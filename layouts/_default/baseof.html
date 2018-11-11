@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="{{- .Site.LanguageCode -}}">
+
+<head>
+	{{- partial "criticalCSS.html" . -}}
+<title> {{- block "title" . -}}{{ .Site.Title }}{{- end -}}</title>
+	{{- partial "head.html" . -}}
+	{{- partial "init_head.html" . -}}
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+		 (adsbygoogle = window.adsbygoogle || []).push({
+					google_ad_client: "ca-pub-6465822539616589",
+					enable_page_level_ads: true
+		 });
+</script>
+</head>
+
+<body>
+	{{- partial "background.html" . -}}
+	{{- partial "sidebar.html" . -}}
+	<div class="pusher">
+		<div class="flipper">
+			<div class="front">
+				{{- block "frontmenu" . -}}{{ end }}{{- block "main" . -}}{{ end }}
+			</div>
+			<div class="back">
+				{{- partial "flip.html" . -}}
+			</div>
+		</div>
+	</div>
+	{{- partial "init_body.html" . -}}
+	{{- partial "shortest.html" . -}}
+	{{- partial "twemoji.html" . -}}
+</body>
+
+</html>
