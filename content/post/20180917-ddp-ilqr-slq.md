@@ -291,12 +291,6 @@ iLQRはDDPのようにヘッシアンを計算する必要も逆行列を計算�
 # Sequential LQR(SLQ)
 SLQはiLQRに対して、離散システムの逐次最適化における手順3で、式\eqref{eq:optimal_input}を用いたものである。
 
-# 実験
-## MATLABでの計算
-## pythonでの計算
-
 # まとめ
 DDP, iLQR, SLQの関係をまとめた。
 どれも、2次の近似における最適化だということがわかった。
-
-EXPLORATION BY RANDOM NETWORK DISTILLATION
