@@ -5,7 +5,7 @@ draft: false
 ---
 
 [方策勾配法の記事](../20171117-reinforcement-learning-policy-gradient)では、確率的な方策についてその勾配を評価するためのscore functionを直接求める方法について述べた。
-本記事では、方策勾配を求めるために価値関数の微分を計算する手法(pathwise derivative method)について扱う。
+本記事では、方策勾配を求めるために価値関数の微分を計算する手法(pathwise derivative metho)について扱う。
 
 何らかの関数$F$があるときに、その期待値の勾配$\nabla_{\theta} \mathbb{E}[F]$を求めたいとする。
 likelihood ratio methodとpathwise derivative methodの違いは、パラメタ$\theta$が期待値にかかってくる確率分布に設定されているか、モデル$F$に存在すると考えるか、ということだといえる。
@@ -25,9 +25,13 @@ likelihood ratio methodとpathwise derivative methodの違いは、パラメタ$
 = \mathbb{E}\_z [\nabla\_\theta f(x(z, \theta))]
 \end{equation}
 を扱う。
-ここで、$f$は連続であるとしている。
+ここで、$f$は連続で微分可能であるものとする。
 そうでなければ、期待値計算の中に微分の操作を入れるような入れ替えを行うことはできない。
-また、$f$は微分可能であるものとして、勾配が0にならないようにする。
+
+Q-Learningでは、値を求めてその最急方向を得たいがために離散行動の中からQ functionの$argmax$を計算していたが、
+Q functionの微分を取ることによって、連続行動の問題についても扱えるようにしたのがpathwise derivative methodである。
+よって、Q-Learningとよく関連している手法である。
+また、行動と方策の更新が必ずしも同期する必要が無いため、方策オフの手法である。
 
 # Stocastic Value Gradient(SVG)
 [MDPとベルマン方程式](../20160410-reinforcement-learning-mdp-belman-equation)
