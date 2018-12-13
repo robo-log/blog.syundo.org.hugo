@@ -13,7 +13,7 @@ draft: false
 * [これからの強化学習](http://www.morikita.co.jp/books/book/3034)
 * [速習 強化学習](http://www.kyoritsu-pub.co.jp/bookdetail/9784320124226)
 
-記事一覧
+# 解説記事一覧
 
 * [MDPとベルマン方程式](../20160410-reinforcement-learning-mdp-belman-equation/)
 * [反復による価値の推定 - TD学習](../20171110-reinforcement-value-policy-iteration/)
@@ -22,10 +22,9 @@ draft: false
 * [方策勾配に基づくアルゴリズム、Actor-Critic](../20171202-reinforcement-learning-policy-gradient-algorithms/)
 * [自然方策勾配法とTRPO、PPO](../20171204-reinforcement-learning-natural-policy-gradient-trpo-ppo/)
 * [モデルベース強化学習](../20171206-reinforcement-learning-model-based-rl/)
+* [pathwise derivative method](../20180714-reinforcement-learning-pathwise-derivative-method/)
 
-作成予定
-
-* pathwise derivative method (SVG, DPG)
-* 逆強化学習
-* A3Cの実装
-* PPOの実装
+## 論文まとめ
+* [A3C](../20180303-asynchronous-methods-for-deep-reinforcement-learning/)
+* [Learning Complex Dexterous Manipulation With Deep Reinforcement Learning and Demonstrations](../20180120-learning-complex-dexterous-manipulation-with-deep-reinforcement-learning-and-demonstrations/)
+* [Exploration by Random Network Distillation](../20181107-exploration-by-random-network-distillation/)
