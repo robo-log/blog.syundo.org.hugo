@@ -3,13 +3,12 @@ title: 技術書展7
 date: 2019-11-30T18:15:40+09:00
 lastmod: 2019-30-10T18:15:40+09:00
 draft: false
-cover:
+cover: "/images/2019/11/rl_book_top.png"
 categories: ["雑記"]
 tags: ["技術書展7"]
 description: 
 ---
 
-<!-- cover: "/images/2019/11/premaidai_walking.png" -->
 9月27日に開催された技術書展7に参加しました。
 
 同人誌を書いたのも、即売会に出したのも初めてのことだったので、大変でしたが非常に楽しい経験ができました。
